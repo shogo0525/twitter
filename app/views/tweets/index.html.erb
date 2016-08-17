@@ -1,12 +1,20 @@
 
 <div class="container">
-    <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
-        
+    <!-- ツイートフォーム -->
     <%= form_for(@tweet) do |f| %>
       <%= f.text_area :content %>
       <br>
       <%= f.submit "ツイート" %>
     <% end %>
-        
+    
+    <!-- ツイート表示 -->
+    <% @tweets.each do |tweet| %>
+      <div class="row">
+          <h6>稲本</h6>
+          <h4><strong><%= tweet.content %></strong></h4>
+      </div>
+    <% end %>
+    
+    <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     </div>
 </div>
