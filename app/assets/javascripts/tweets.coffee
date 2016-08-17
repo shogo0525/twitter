@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('.post_tweet').bind('keyup keydown keypress change',->
+  $('.post_tweet').on('keyup keydown keypress change',->
     countMax = 255;
     thisValueLength = $(this).val().length
     countDown = countMax - thisValueLength

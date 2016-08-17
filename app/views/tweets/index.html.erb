@@ -2,24 +2,20 @@
 <div class="container">
     <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     
-    <div>
-        <!-- ツイートフォーム -->
-        <p class="count_tweet">0</p>
-        <%= form_for(@tweet, url: choose_new_or_edit) do |f| %>
-          <%= f.text_area :content, class: "post_tweet form-control", :size => "40x5", placeholder: :"1文字以上255文字以下でツイート可能です" %>
-          <br>
-          <%= f.submit "ツイート", class: 'btn btn-primary btn-block' %>
-        <% end %>
-    </div>
+      <%= render 'tweet_form' %>
+
     
-    <!-- ツイート表示 -->
-    <% @tweets.each do |tweet| %>
-      <div class="row">
-          <p>稲本 <span><%= tweet.created_at %></span></p>
-          <h4><strong><%= tweet.content %></strong></h4>
-          <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-default btn-sm btn btn-danger'%>
+      <div class="tweets-list">
+        <!-- ツイート表示 -->
+        <% @tweets.each do |tweet| %>
+          <div class="row">
+              <p>稲本 <span><%= tweet.created_at %></span></p>
+              <h4><strong><%= tweet.content %></strong></h4>
+              <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn btn-default btn-sm btn-success' %>
+              <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-default btn-sm btn btn-danger'%>
+          </div>
+        <% end %>
       </div>
-    <% end %>
     
     
     </div>

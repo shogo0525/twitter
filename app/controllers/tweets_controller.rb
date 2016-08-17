@@ -1,25 +1,47 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only:[:destroy]
+  before_action :set_tweet, only:[:edit, :update, :destroy]
 
   def index
+    
     if params[:back]
       @tweet = Tweet.new(tweets_params)
     else
       @tweet = Tweet.new
     end
+    
     #@tweets = Tweet.all
     @tweets = Tweet.order(created_at: :desc)
   end
   
+  def new
+  end
+  
   def confirm
     @tweet = Tweet.new(tweets_params)
+    render :new if @tweet.invalid?
   end
   
   def create
     @tweet = Tweet.new(tweets_params)
-    @tweet.save
-    redirect_to root_path
+    if @tweet.save
+      redirect_to root_path
+    else
+      #render :new
+    end
   end
+  
+  def edit
+    
+  end
+  
+  def update
+    if @tweet.update(tweets_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+    
+  end 
   
   def destroy
     @tweet.destroy

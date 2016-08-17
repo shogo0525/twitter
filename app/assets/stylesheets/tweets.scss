@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.notice {
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 500px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.tweets-list {
+    /*height: 800px;
+    overflow: scroll;*/
+    padding-bottom: 40px;
+}
+
 .wrapper {
   /*margin: 0px auto;*/
   padding: 20px 20px 20px 35px;
