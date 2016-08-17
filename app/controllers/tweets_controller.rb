@@ -1,4 +1,6 @@
 class TweetsController < ApplicationController
+  before_action :set_tweet, only:[:destroy]
+
   def index
     @tweet = Tweet.new
     #@tweets = Tweet.all
@@ -11,9 +13,18 @@ class TweetsController < ApplicationController
     redirect_to root_path
   end
   
+  def destroy
+    @tweet.destroy
+    redirect_to tweets_path
+  end
+  
   private
     def blogs_params
       params.require(:tweet).permit(:content)
+    end
+    
+    def set_tweet
+      @tweet = Tweet.find(params[:id])
     end
   
 end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root 'tweets#index'
   
-  resources :tweets, only:[:index, :new, :create]
+  resources :tweets, only:[:index, :new, :create, :edit, :update, :destroy] 
 
   #get 'tweets' => 'tweets#index'
 

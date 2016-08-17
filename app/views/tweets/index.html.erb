@@ -17,6 +17,7 @@
       <div class="row">
           <p>稲本 <span><%= tweet.created_at %></span></p>
           <h4><strong><%= tweet.content %></strong></h4>
+          <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: {confirm: "Are you sure?"} %>
       </div>
     <% end %>
     
