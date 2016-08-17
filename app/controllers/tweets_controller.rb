@@ -2,13 +2,21 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only:[:destroy]
 
   def index
-    @tweet = Tweet.new
+    if params[:back]
+      @tweet = Tweet.new(tweets_params)
+    else
+      @tweet = Tweet.new
+    end
     #@tweets = Tweet.all
     @tweets = Tweet.order(created_at: :desc)
   end
   
+  def confirm
+    @tweet = Tweet.new(tweets_params)
+  end
+  
   def create
-    @tweet = Tweet.new(blogs_params)
+    @tweet = Tweet.new(tweets_params)
     @tweet.save
     redirect_to root_path
   end
@@ -19,7 +27,7 @@ class TweetsController < ApplicationController
   end
   
   private
-    def blogs_params
+    def tweets_params
       params.require(:tweet).permit(:content)
     end
     
