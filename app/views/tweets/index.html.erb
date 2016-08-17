@@ -1,13 +1,16 @@
 
 <div class="container">
     <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
-        
-    <!-- ツイートフォーム -->
-    <%= form_for(@tweet) do |f| %>
-      <%= f.text_area :content %>
-      <br>
-      <%= f.submit "ツイート" %>
-    <% end %>
+    
+    <div>
+        <!-- ツイートフォーム -->
+        <%= form_for(@tweet) do |f| %>
+          <%= f.text_area :content, class: "post_tweet", :size => "40x5", placeholder: :"1文字以上255文字以下でツイート可能です" %>
+          <br>
+          <%= f.submit "ツイート" %>
+        <% end %>
+        <p class="count_tweet">0</p>
+    </div>
     
     <!-- ツイート表示 -->
     <% @tweets.each do |tweet| %>
